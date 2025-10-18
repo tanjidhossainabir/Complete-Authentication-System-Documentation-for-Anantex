@@ -44,8 +44,8 @@ pip install Django
 Step 2: Project Structure
 Create the following structure:
 
-```
-anantex_project/
+
+```anantex_project/
 ├── manage.py
 ├── requirements.txt
 ├── anantex/
@@ -108,3 +108,236 @@ Step 4: Database Setup
 ```
 python manage.py makemigrations
 python manage.py migrate
+
+```
+4.2 Create Superuser
+```
+python manage.py createsuperuser
+```
+
+```Step 5: Run Development Server
+
+```python manage.py runserver
+
+```
+Visit: http://localhost:8000
+
+```📁 Project Structure Details
+```
+Backend Structure
+
+```anantex_project/
+├── anantex/          # Project configuration
+├── auth_app/         # Authentication application
+├── templates/        # HTML templates
+└── manage.py         # Django management script
+
+
+```
+Key Files
+models.py - Custom user model with doctor/patient roles
+
+views.py - Authentication logic (login, signup, logout)
+
+urls.py - URL routing configuration
+
+admin.py - Django admin customization
+
+
+👥 User Types
+1. Doctor
+Medical professionals
+
+Specialized dashboard access
+
+Patient management capabilities
+2. Patient
+Healthcare recipients
+
+Medical record access
+
+Appointment scheduling
+
+🔐 Authentication Flow
+Registration Process
+User visits signup page
+
+Selects role (Doctor/Patient)
+
+Fills personal information
+
+Account created and auto-login
+
+Login Process
+User enters credentials
+
+System authenticates
+
+Redirect to role-specific dashboard
+
+Logout Process
+User clicks logout
+
+Session terminated
+
+Redirect to home page
+
+🛠️ API Endpoints
+Method	Endpoint	Description
+GET	/	Home page
+GET	/auth/signup/	Registration page
+POST	/auth/signup/	Create new account
+GET	/auth/login/	Login page
+POST	/auth/login/	Authenticate user
+GET	/auth/logout/	Logout user
+GET	/auth/dashboard/	User dashboard
+🎨 Frontend Templates
+Home Page (index.html)
+Welcome message
+
+Login/Signup buttons
+
+Platform introduction
+
+Login Page (login.html)
+Email/Password form
+
+Remember me option
+
+Forgot password link
+
+Signup Page (signup.html)
+Personal information form
+
+Role selection (Doctor/Patient)
+
+Country dropdown
+
+Password confirmation
+
+⚙️ Configuration
+Database
+Default: SQLite (development)
+
+Recommended: PostgreSQL (production)
+
+Security Settings
+
+```# In settings.py
+DEBUG = False  # Set to False in production
+ALLOWED_HOSTS = ['yourdomain.com', 'localhost']
+CSRF_TRUSTED_ORIGINS = ['https://yourdomain.com']
+
+```
+Static Files
+
+```
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+```
+🚀 Deployment
+Production Checklist
+Set DEBUG = False
+
+Configure production database
+
+Set up static files serving
+
+Configure ALLOWED_HOSTS
+
+Set secure SECRET_KEY
+
+Enable HTTPS
+
+Set up error logging
+
+Deployment Options
+Heroku: Simple PaaS deployment
+
+AWS EC2: Full control VPS
+
+PythonAnywhere: Easy Django hosting
+
+DigitalOcean: Scalable droplets
+
+🐛 Troubleshooting
+Common Issues
+1. Migration Errors
+
+```
+# Solution:
+python manage.py makemigrations auth_app
+python manage.py migrate
+
+```
+2. Static Files Not Loading
+```
+# In settings.py
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
+```
+3. Template Not Found
+```
+# Ensure templates directory is included
+TEMPLATES = [
+    {
+        'DIRS': [BASE_DIR / 'templates'],
+    },
+]
+
+```
+🤝 Contributing
+Fork the repository
+
+Create feature branch (git checkout -b feature/AmazingFeature)
+
+Commit changes (git commit -m 'Add AmazingFeature')
+
+Push to branch (git push origin feature/AmazingFeature)
+
+Open Pull Request
+
+📄 License
+This project is licensed under the MIT License - see the LICENSE.md file for details.
+
+🙏 Acknowledgments
+Django Foundation for the amazing web framework
+
+Medical community for inspiration
+
+Contributors and testers
+
+Live Demo: anantex.org
+GitHub Repository: github.com/anantex/auth-system
+Documentation: docs.anantex.org
+
+<div align="center">
+Built with ❤️ for the Medical Community
+</div> ```
+📋 Additional Files
+requirements.txt
+
+```
+Django>=4.0,<5.0
+
+```
+.gitignore
+
+```
+# Django
+*.pyc
+__pycache__/
+db.sqlite3
+
+# Environment
+.env
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Static files
+staticfiles/
+media/
