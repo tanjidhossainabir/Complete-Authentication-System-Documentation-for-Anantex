@@ -25,18 +25,18 @@ A complete Django authentication system for medical platform with doctor and pat
 ### Step 1: Project Setup
 
 #### 1.1 Create Project Directory
-```bash
+```
 mkdir anantex_project
 cd anantex_project
 
 ```
 1.2 Create Virtual Environment
-```bash
+```
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 ```1.3 Install Dependencies
-```bash
+
 pip install Django
 
 
@@ -71,3 +71,40 @@ Step 3: Configuration
 3.1 Update settings.py
 Add the following to your settings.py:
 ```
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'auth_app',
+]
+
+AUTH_USER_MODEL = 'auth_app.CustomUser'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGOUT_REDIRECT_URL = 'home'
+
+```
+3.2 Create Custom User Model
+In auth_app/models.py:
+```
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
+class CustomUser(AbstractUser):
+    USER_TYPE_CHOICES = (
+        ('doctor', 'Doctor'),
+        ('patient', 'Patient'),
+    )
+    
+    user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES)
+    country = models.CharField(max_length=50)
+
+```
+Step 4: Database Setup
+4.1 Run Migrations
+```
+python manage.py makemigrations
+python manage.py migrate
