@@ -4,7 +4,7 @@ Login Page (onsite)
 
 Signup Page (onsite)
 
-ChatGPT style - HTML CSS signup page
+HTML CSS signup page
 
 Select Options - country/options select korte parbe
 
