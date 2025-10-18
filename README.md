@@ -29,8 +29,45 @@ A complete Django authentication system for medical platform with doctor and pat
 mkdir anantex_project
 cd anantex_project
 
-
+```
 1.2 Create Virtual Environment
-
+```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+```1.3 Install Dependencies
+```bash
+pip install Django
+
+
+```
+Step 2: Project Structure
+Create the following structure:
+
+```
+anantex_project/
+├── manage.py
+├── requirements.txt
+├── anantex/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── auth_app/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── views.py
+│   └── urls.py
+├── templates/
+│   ├── index.html
+│   ├── login.html
+│   └── signup.html
+└── README.md
+```
+
+Step 3: Configuration
+3.1 Update settings.py
+Add the following to your settings.py:
+```
