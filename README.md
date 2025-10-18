@@ -117,7 +117,7 @@ python manage.py createsuperuser
 
 ```Step 5: Run Development Server
 
-```python manage.py runserver
+python manage.py runserver
 
 ```
 Visit: http://localhost:8000
